@@ -1,0 +1,25 @@
+.header-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 220px;
+  margin: 0 70px;
+  max-width: calc(100% - 290px);
+  gap: 10px;
+}
+
+.header-logo {
+  width: 192px;
+}
+
+.header-logo img {
+  width: 100%;
+}
+
+.navigation-container {
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+  justify-content: flex-end;
+}

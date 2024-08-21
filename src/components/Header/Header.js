@@ -1,23 +1,15 @@
-import Button from '../Button/Button'
 import './header.css'
-
-const headerContent = {
-  heading: "Little Lemon",
-  subTitle: "Chicago",
-  description: "We are family owned Mediterranean restaurant, focused on traditional recipes served with a modern twist."
-};
+import Nav from '../Nav/Nav'
+import Logo from '../../assets/logo.svg'
 
 const Header = () => {
   return (
     <div className="header-container">
-      <div className="header-content">
-        <div className="header-content__text">
-          <h1 className="display-title">{headerContent.heading}</h1>
-          <h2 className="sub-title">{headerContent.subTitle}</h2>
-          <p>{headerContent.description}</p>
-          <Button>Reserve a table</Button>
-        </div>
-        <div className="header-content__image"></div>
+      <div className="header-logo">
+        <img src={Logo} alt="logo"/>
+      </div>
+      <div className="navigation-container">
+        <Nav />
       </div>
     </div>
   )

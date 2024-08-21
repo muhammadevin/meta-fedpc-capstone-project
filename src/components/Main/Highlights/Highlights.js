@@ -1,21 +1,28 @@
 import Button from "../../Button/Button"
 import MenuCard from "../../MenuCard/MenuCard"
+import './highlights.css'
+import Bruchetta from '../../../assets/bruchetta.svg'
+import LemonDessert from '../../../assets/lemon dessert.jpg'
+import GreekSalad from '../../../assets/greek salad.jpg'
 
 const specials = [
   {
     name: "Greek Salad",
     price: 12.98,
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam rhoncus iaculis lacus, sed pretium augue malesuada sit amet."
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam rhoncus iaculis lacus, sed pretium augue malesuada sit amet.",
+    image: GreekSalad
   },
   {
     name: "Bruchetta",
     price: 5.99,
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam rhoncus iaculis lacus, sed pretium augue malesuada sit amet."
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam rhoncus iaculis lacus, sed pretium augue malesuada sit amet.",
+    image: Bruchetta
   },
   {
     name: "Lemon Dessert",
     price: 5,
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam rhoncus iaculis lacus, sed pretium augue malesuada sit amet."
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam rhoncus iaculis lacus, sed pretium augue malesuada sit amet.",
+    image: LemonDessert
   }
 ]
 
@@ -30,7 +37,7 @@ const Highlights = () => {
         {
           specials.map((menu) => {
             return (
-              <MenuCard title={menu.name} price={menu.price} description={menu.description}/>
+              <MenuCard title={menu.name} price={menu.price} description={menu.description} image={menu.image}/>
             )
           })
         }

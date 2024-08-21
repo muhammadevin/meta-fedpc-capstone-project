@@ -1,0 +1,21 @@
+.highlights-section {
+  display: flex;
+  flex-direction: column;
+  padding: 32px 290px;
+  gap: 20px;
+}
+
+.highlights-section__heading {
+  display: flex;
+  flex-direction: row;
+}
+
+.highlights-section__heading h1 {
+  flex-grow: 1;
+}
+
+.highlights-section__product {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}

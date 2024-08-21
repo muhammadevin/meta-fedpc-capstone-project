@@ -1,9 +1,11 @@
-import React from 'react'
+import './button.css'
 
 const Button = ({children}) => {
   return (
     <button className='button'>
-      { children }
+      <h4 className='card-title'>
+        { children }
+      </h4>
     </button>
   )
 }

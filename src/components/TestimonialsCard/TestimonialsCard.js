@@ -1,17 +1,20 @@
-import React from 'react'
+import './testimonialscard.css'
+import StarRating from '../RatingStars/RatingStars'
 
 const TestimonialsCard = (props) => {
   return (
     <div className='testimonials-card'>
-      <div className="testimonials-card__content">
-        <div className="testimonials-card__rating">{props.rating}</div>
-        <div className="testimonials-card__profile">
-          <img src={props.imgSource} alt="profile"/>
-          <h4 className='card-title'>{props.name}</h4>
+      <div className="testimonials-card__rating">
+        <StarRating stars={props.rating}/>
+      </div>
+      <div className="testimonials-card__profile">
+        <div className="testimonials-card__profile-image">
+          <img src={props.imageLink} alt="profile"/>
         </div>
-        <div className="testimonials-card__review">
-          <p>{props.review}</p>
-        </div>
+        <h4 className='card-title'>{props.name}</h4>
+      </div>
+      <div className="testimonials-card__review">
+        <p>{props.review}</p>
       </div>
     </div>
   )

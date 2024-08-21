@@ -1,0 +1,49 @@
+.menu-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #EDEFEE;
+  border-radius: 16px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.25);
+}
+
+.menu-card-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 172px;
+  width: auto;
+  overflow: hidden;
+  border-radius: 16px 16px 0 0;
+}
+
+.menu-card-image img {
+  width: 100%;
+  height: auto;
+  object-fit: fill;
+}
+
+.menu-card-details {
+  display: flex;
+  flex-direction: column;
+  padding: 16px 16px 24px 16px;
+}
+
+.menu-card-details p {
+  color: black;
+}
+
+.menu-card-details__description p {
+  color: #4C4C4C;
+}
+
+.menu-card-details__title {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.menu-card-details__title h4:first-child {
+  flex-grow: 1;
+}

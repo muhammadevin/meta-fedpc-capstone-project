@@ -31,7 +31,7 @@ const Highlights = () => {
     <div className='highlights-section'>
       <div className="highlights-section__heading">
         <h1>This weeks specials!</h1>
-        <Button>Reserve a table</Button>
+        <Button>Online menu</Button>
       </div>
       <div className="highlights-section__product">
         {

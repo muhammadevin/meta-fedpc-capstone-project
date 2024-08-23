@@ -1,4 +1,6 @@
 import FooterNav from "../FooterNav/FooterNav"
+import FooterImage from '../../assets/logo.png'
+import './footer.css'
 
 const footerItems = [
   {
@@ -17,16 +19,20 @@ const footerItems = [
 
 const Footer = () => {
   return (
-    <div className='footer'>
-      <div className="footer-image"></div>
-      <div className="footer-nav">
-        {
-          footerItems.map((footerItem) => {
-            return (
-              <FooterNav navCategory={footerItem.navCategory} navItems={footerItem.navItems}/>
-            )
-          })
-        }
+    <div className='footer-wrapper'>
+      <div className="footer-container">
+        <div className="footer-image">
+          <img src={FooterImage} alt="footer-image"/>
+        </div>
+        <div className="footer-nav">
+          {
+            footerItems.map((footerItem) => {
+              return (
+                <FooterNav navCategory={footerItem.navCategory} navItems={footerItem.navItems}/>
+              )
+            })
+          }
+        </div>
       </div>
     </div>
   )

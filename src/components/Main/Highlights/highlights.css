@@ -1,13 +1,15 @@
 .highlights-section {
   display: flex;
   flex-direction: column;
-  padding: 32px 290px;
+  padding: 8px 72px;
   gap: 20px;
+  max-width: 920px;
 }
 
 .highlights-section__heading {
   display: flex;
   flex-direction: row;
+  align-items: center;
 }
 
 .highlights-section__heading h1 {
@@ -18,4 +20,16 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 32px;
+  place-items: center;
+}
+
+@media (max-width: 764px) {
+  .highlights-section__product {
+    grid-template-columns: 1fr;
+  }
+
+  .highlights-section__heading {
+    flex-direction: column;
+    margin-bottom: 1rem;
+  }
 }

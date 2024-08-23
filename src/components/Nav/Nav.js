@@ -1,19 +1,20 @@
 import './nav.css'
+import { useState } from 'react';
 
-const navItems = [
-  { label: 'Home', href: '#home' },
-  { label: 'About', href: '#about' },
-  { label: 'Menu', href: '#menu' },
-  { label: 'Reservations', href: '#reservations' },
-  { label: 'Order Online', href: '#order-online' },
-  { label: 'Login', href: '#login' }
-];
+const Nav = ( props ) => {
+  const [isOpen, setIsOpen] = useState(false);
 
-const Nav = () => {
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
     <nav>
+      <div className="burger-menu" onClick={toggleMenu}>
+        <div className={`burger-bar ${isOpen ? 'open' : ''}`}></div>
+      </div>
       <ul className='navigation-section'>
-        {navItems.map((item, index) => (
+        {props.navItems.map((item, index) => (
           <li key={index}>
             <a className='paragraph-text navigation-items' href={item.href}>
               {item.label}

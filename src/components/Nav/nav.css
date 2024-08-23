@@ -12,4 +12,10 @@
   padding: 0;
   text-decoration: none;
   color: inherit;
+  transition: all .2s;
+}
+
+.navigation-items:hover {
+  color: #F4CE14;
+  font-weight: bold;
 }

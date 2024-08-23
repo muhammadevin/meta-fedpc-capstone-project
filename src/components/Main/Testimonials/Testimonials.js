@@ -30,21 +30,23 @@ const testimonials = [
 
 const Testimonials = () => {
   return (
-    <div className='testimonials-section'>
-      <h1>Testimonials</h1>
-      <div className="testimonials-section__content">
-        {
-          testimonials.map((testimonial) => {
-            return (
-              <TestimonialsCard
-                name={testimonial.name}
-                rating={testimonial.rating}
-                review={testimonial.review}
-                imageLink={testimonial.imageLink}
-              />
-            )
-          })
-        }
+    <div className="testimonials-wrapper">
+      <div className='testimonials-section'>
+        <h1>Testimonials</h1>
+        <div className="testimonials-section__content">
+          {
+            testimonials.map((testimonial) => {
+              return (
+                <TestimonialsCard
+                  name={testimonial.name}
+                  rating={testimonial.rating}
+                  review={testimonial.review}
+                  imageLink={testimonial.imageLink}
+                />
+              )
+            })
+          }
+        </div>
       </div>
     </div>
   )

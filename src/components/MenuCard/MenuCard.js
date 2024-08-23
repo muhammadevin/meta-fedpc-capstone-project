@@ -1,4 +1,5 @@
 import './menucard.css'
+import { MdDeliveryDining } from "react-icons/md";
 
 const MenuCard = (props) => {
   return (
@@ -16,6 +17,7 @@ const MenuCard = (props) => {
         </div>
         <div className="menu-card-details__order">
           <p className='highlight-text'>Order a delivery</p>
+          <MdDeliveryDining size="20px"/>
         </div>
       </div>
     </div>

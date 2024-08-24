@@ -34,6 +34,10 @@
 }
 
 @media (max-width: 600px) {
+  .testimonials-section {
+    padding: 72px 32px;
+  }
+
   .testimonials-section__content {
     grid-template-columns: 1fr;
   }

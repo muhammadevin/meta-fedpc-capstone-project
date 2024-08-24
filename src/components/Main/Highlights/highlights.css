@@ -24,6 +24,10 @@
 }
 
 @media (max-width: 764px) {
+  .highlights-section {
+    padding: 8px 32px;
+  }
+
   .highlights-section__product {
     grid-template-columns: 1fr;
   }

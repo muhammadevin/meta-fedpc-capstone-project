@@ -11,8 +11,9 @@
   box-sizing: border-box;
   border: 0;
   transition: all .4s;
+  color: black;
 }
 
 .button:hover {
-  background-color: #f9dc4a;
+  background-color: #ffdc30;
 }

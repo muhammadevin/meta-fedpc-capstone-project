@@ -58,6 +58,7 @@
   .about-section {
     grid-template-columns: 1fr;
     gap: 20px;
+    padding: 0 32px 40px 40px;
   }
 
   .about-section__image {

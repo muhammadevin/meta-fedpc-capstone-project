@@ -33,12 +33,19 @@
 
 @media (max-width: 852px) {
   .footer-container{
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     width: fit-content;
+    padding: 32px 32px;
+    grid-auto-flow: dense;
   }
 
   .footer-image {
-    width: fit-content;
-    height: fit-content;
+    height: 56px;
+    width: auto;
   }
+
+  .footer-image img {
+    height: 100%;
+  }
+  
 }

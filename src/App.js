@@ -13,10 +13,10 @@ function App() {
 
   return (
     <>
+      <Sidebar isOpen={sidebarOpen} toggleSidebar={handleViewSidebar} />
       <Header toggleSidebar={handleViewSidebar}/>
       <Main />
       <Footer />
-      <Sidebar isOpen={sidebarOpen} toggleSidebar={handleViewSidebar} />
     </>
   );
 }

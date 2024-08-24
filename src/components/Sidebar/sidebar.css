@@ -1,0 +1,49 @@
+.sidebar, .sidebar-open {
+  display: none
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    align-items: flex-end;
+    right: -200vw;
+    width: 100vw;
+    height: 100%;
+    padding: 36px;
+    gap: 32px;
+    z-index: 1000;
+    transition: right 0.5s ease-in-out;
+  }
+
+  .sidebar-open {
+    right: 0;
+  }
+
+  .close-btn {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .sidebar-items {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    text-align: right;
+  }
+
+  .sidebar-link {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    color: inherit;
+    transition: all .2s;
+  }
+}

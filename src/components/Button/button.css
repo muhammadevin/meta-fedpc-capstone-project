@@ -17,3 +17,7 @@
 .button:hover {
   background-color: #ffdc30;
 }
+
+.button:disabled {
+  background-color: black;
+}

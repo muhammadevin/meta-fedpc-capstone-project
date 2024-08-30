@@ -1,44 +1,111 @@
 import './bookingform.css'
 import {useState} from 'react'
 import { validateEmail } from "../utils";
-import { DateInput } from 'rsuite';
+// import { DateInput } from 'rsuite';
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import Button from '../Button/Button';
 
-const PasswordErrorMessage = () => {
-  return (
-    <p className="FieldError">Password should have at least 8 characters</p>
-  );
-};
-
 const BookingForm = () => {
-  const [date, setDate] = useState(() => {
-    const today = new Date();
-    return today.toISOString().split('T')[0];
+  const [formData, setFormData] = useState({
+    date: new Date().toISOString().split('T')[0],
+    time: '10:00',
+    numOfGuests: 1,
+    occasion: '',
+    firstName: '',
+    lastName: '',
+    phoneNumber: 0,
+    email: '',
   });
-  const [time, setTime] = useState(() => {
-    const now = new Date();
-    return now.toTimeString().slice(0, 5);
-  });
-  const [numOfGuests, setNumOfGuests] = useState(1);
-  const [occasion, setOccasion] = useState("");
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState({
-    value: "",
-    isTouched: false,
-  });
+
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  const generateTimeOptions = () => {
+    const times = [];
+    for (let i = 10; i <= 20; i++) {
+      const hour = i.toString().padStart(2, "0");
+      times.push(`${hour}:00`);
+    }
+    return times;
+  };
+
+  const [errors, setErrors] = useState({});
+  const hasErrors = () => Object.values(errors).some((error) => error);
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+
+    validateField(name, value);
+  };
+
+  const getIsFormValid = () => {
+
+  }
+
+  const validateField = (name, value) => {
+    let error = '';
+
+    switch (name) {
+      case 'numOfGuests':
+        if (!value) {
+          error = 'Please input the number of guests.';
+        } else if (value < 1) {
+          error = 'Minimum of guests is one person.';
+        }
+        break;
+
+      case 'firstName':
+        if (!value) {
+          error = 'First name is required.';
+        } else if (value.length < 2) {
+          error = 'First name must be at least 2 characters long.';
+        }
+        break;
+
+      case 'lastName':
+        if (!value) {
+          error = 'Last name is required.';
+        } else if (value.length < 2) {
+          error = 'Last name must be at least 2 characters long.';
+        }
+        break;
+
+      case 'phoneNumber':
+        if (!value) {
+          error = 'Phone number is required.';
+        } else if (value.length < 7) {
+          error = 'Phone number must be at least 7 characters long.';
+        }
+        break;
+
+      case 'email':
+        if (!value) {
+          error = 'Email is required.';
+        } else if (!validateEmail(value)) {
+          error = 'Invalid email format.';
+        }
+        break;
+
+      default:
+        break;
+    }
+
+    setErrors({
+      ...errors,
+      [name]: error,
+    });
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault()
     alert("Please check your email for confirmation");
-  };
-
-  const getIsFormValid = () => {
-    return (firstName !== "" &&
-            validateEmail(email) &&
-            password.value.length >= 8);
+    console.log(formData);
   };
 
   return (
@@ -48,62 +115,88 @@ const BookingForm = () => {
           <label>
             Date <sup>*</sup>
           </label>
-          <DateInput value={date} onChange={(e) => {setDate(date)}} />
+          {/* <DateInput name='date' value={formData.date} onChange={handleInputChange}/> */}
+          <DatePicker
+            className='field__date-picker'
+            name='date'
+            selected={formData.date}
+            onChange={(date) => setFormData({...formData, date: date})}
+            minDate={today}
+            dateFormat="yyyy-MM-dd"
+          />
+          <div className="booking-form__field-error"></div>
         </div>
         <div className="booking-form__field">
           <label>
             Time <sup>*</sup>
           </label>
-          <input placeholder="--.--" value={time} onChange={(e) => {setTime(e.target.value)}}/>
+          {/* <input name='time' placeholder="--.--" value={formData.time} onChange={handleInputChange}/> */}
+          <select
+            name='time'
+            value={formData.time}
+            onChange={(e) => setFormData({...formData, time: e.target.value})}
+            className = 'booking-form__field-time'
+          >
+            {generateTimeOptions().map((time) => (
+              <option key={time} value={time}>
+                {time}
+              </option>
+            ))}
+          </select>
+          <div className="booking-form__field-error"></div>
         </div>
         <div className="booking-form__field">
           <label>
             Number of guests <sup>*</sup>
           </label>
-          <input type="number" placeholder="1" value={numOfGuests} onChange={(e) => {setNumOfGuests(e.target.value)}}/>
+          <input name='numOfGuests' type="number" min="1" placeholder="Number of guests" value={formData.numOfGuests} onChange={handleInputChange}/>
+          <div className="booking-form__field-error">
+            {errors.numOfGuests && <p className='paragraph-text' style={{ color: 'red' }}>{errors.numOfGuests}</p>}
+          </div>
         </div>
         <div className="booking-form__field">
           <label>
             Occasion
           </label>
-          <input placeholder="Ex: Birthday/Anniversary" value={occasion} onChange={(e) => {setOccasion(e.target.value)}}/>
+          <input name='occasion' placeholder="Ex: Birthday/Anniversary" value={formData.occasion} onChange={handleInputChange}/>
+          <div className="booking-form__field-error"></div>
         </div>
         <div className="booking-form__field">
           <label>
             First name <sup>*</sup>
           </label>
-          <input placeholder="First name" value={firstName} onChange={(e) => {setFirstName(e.target.value)}}/>
+          <input name='firstName' placeholder="First name" value={formData.firstName} onChange={handleInputChange}/>
+          <div className="booking-form__field-error">
+            {errors.firstName && <p className='paragraph-text' style={{ color: 'red' }}>{errors.firstName}</p>}
+          </div>
         </div>
         <div className="booking-form__field">
           <label>Last name</label>
-          <input placeholder="Last name" value={lastName} onChange={(e) => {setLastName(e.target.value)}}/>
+          <input name='lastName' placeholder="Last name" value={formData.lastName} onChange={handleInputChange}/>
+          <div className="booking-form__field-error">
+            {errors.lastName && <p className='paragraph-text' style={{ color: 'red' }}>{errors.lastName}</p>}
+          </div>
         </div>
         <div className="booking-form__field">
           <label>
             Phone number <sup>*</sup>
           </label>
-          <input placeholder="xxxxxxxxxx" value={phoneNumber} onChange={(e) => {setPhoneNumber(e.target.value)}}/>
+          <input name='phoneNumber' type="number" className='field__phone-number' value={formData.phoneNumber} onChange={handleInputChange}/>
+          <div className="booking-form__field-error">
+            {errors.phoneNumber && <p className='paragraph-text' style={{ color: 'red' }}>{errors.phoneNumber}</p>}
+          </div>
         </div>
         <div className="booking-form__field">
           <label>
             Email address <sup>*</sup>
           </label>
-          <input placeholder="Email address" value={email} onChange={(e) => {setEmail(e.target.value)}}/>
-        </div>
-        <div className="booking-form__field">
-          <label>
-            Password <sup>*</sup>
-          </label>
-          <input placeholder="Password" value={password.value}
-            onChange={(e) => { setPassword({ ...password, value: e.target.value })}}
-            onBlur={() => setPassword({ ...password, isTouched: true })}
-          />
-          {password.isTouched && password.value.length < 8 && (
-            <PasswordErrorMessage />
-          )}
+          <input name='email' placeholder="Email address" value={formData.email} onChange={handleInputChange}/>
+          <div className="booking-form__field-error">
+            {errors.email && <p className='paragraph-text' style={{ color: 'red' }}>{errors.email}</p>}
+          </div>
         </div>
       </fieldset>
-      <Button type="submit" disabled={!getIsFormValid()}>
+      <Button type="submit" disabled={!hasErrors()}>
         Reserve table
       </Button>
     </form>

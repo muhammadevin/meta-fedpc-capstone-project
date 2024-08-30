@@ -1,16 +1,27 @@
-import Hero from "./Hero/Hero"
-import Highlights from "./Highlights/Highlights"
-import Testimonials from "./Testimonials/Testimonials"
-import About from "./About/About"
 import './main.css'
+import { Routes, Route } from 'react-router-dom';
+import { useState } from 'react';
+import Header from '../Header/Header';
+import Sidebar from '../Sidebar/Sidebar';
+import Footer from '../Footer/Footer';
+import Home from '../Home/Home';
+import BookingPage from '../BookingPage/BookingPage';
 
 const Main = () => {
+  const [sidebarOpen, setSideBarOpen] = useState(false);
+  const handleViewSidebar = () => {
+    setSideBarOpen(!sidebarOpen);
+  };
+
   return (
-    <div className="main-section">
-      <Hero />
-      <Highlights />
-      <Testimonials />
-      <About />
+    <div>
+      <Sidebar isOpen={sidebarOpen} toggleSidebar={handleViewSidebar} />
+      <Header toggleSidebar={handleViewSidebar}/>
+      <Routes>
+        <Route path='/' element={<Home />}/>
+        <Route path='/reservation' element={<BookingPage />}/>
+      </Routes>
+      <Footer />
     </div>
   )
 }

@@ -1,9 +1,9 @@
-import Button from "../../Button/Button"
-import MenuCard from "../../MenuCard/MenuCard"
+import Button from "../Button/Button"
+import MenuCard from "../MenuCard/MenuCard"
 import './highlights.css'
-import Bruchetta from '../../../assets/bruchetta.svg'
-import LemonDessert from '../../../assets/lemon dessert.jpg'
-import GreekSalad from '../../../assets/greek salad.jpg'
+import Bruchetta from '../../assets/bruchetta.svg'
+import LemonDessert from '../../assets/lemon dessert.jpg'
+import GreekSalad from '../../assets/greek salad.jpg'
 
 const specials = [
   {

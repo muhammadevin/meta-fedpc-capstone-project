@@ -1,6 +1,6 @@
-import Button from '../../Button/Button';
+import Button from '../Button/Button';
 import './hero.css'
-import HeroImage from '../../../assets/restauranfood.jpg'
+import HeroImage from '../../assets/restauranfood.jpg'
 
 const heroContent = {
   heading: "Little Lemon",

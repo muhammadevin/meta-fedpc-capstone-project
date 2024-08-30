@@ -1,5 +1,5 @@
 import './testimonials.css'
-import TestimonialsCard from '../../TestimonialsCard/TestimonialsCard'
+import TestimonialsCard from '../TestimonialsCard/TestimonialsCard'
 
 const testimonials = [
   {

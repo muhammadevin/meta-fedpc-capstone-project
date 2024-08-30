@@ -1,6 +1,6 @@
 import './about.css'
-import About1 from '../../../assets/about1.jpg'
-import About2 from '../../../assets/about2.jpg'
+import About1 from '../../assets/about1.jpg'
+import About2 from '../../assets/about2.jpg'
 
 const aboutContent = {
   heading: "Little Lemon",

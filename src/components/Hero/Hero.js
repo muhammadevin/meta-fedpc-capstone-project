@@ -1,6 +1,7 @@
 import Button from '../Button/Button';
 import './hero.css'
 import HeroImage from '../../assets/restauranfood.jpg'
+import { Link } from 'react-router-dom'
 
 const heroContent = {
   heading: "Little Lemon",
@@ -16,7 +17,9 @@ const Hero = () => {
           <h1 className="display-title">{heroContent.heading}</h1>
           <h2 className="sub-title">{heroContent.subTitle}</h2>
           <p>{heroContent.description}</p>
-          <Button>Reserve a table</Button>
+          <Link to='/reservation'>
+            <Button>Reserve a table</Button>
+          </Link>
         </div>
         <div className="hero-content__image">
           <img src={HeroImage} alt='hero-image'/>

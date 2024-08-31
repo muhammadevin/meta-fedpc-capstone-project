@@ -1,0 +1,19 @@
+.confirmed-booking {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  color: black;
+  min-height: 90vh;
+}
+
+.confirmed-booking p {
+  color: black;
+  margin-bottom: 2rem;
+}
+
+.confirmed-booking img {
+  width: 10rem;
+  height: auto;
+}

@@ -6,7 +6,7 @@ const Sidebar = ( props ) => {
   const sidebarClass = props.isOpen ? "sidebar-open" : "";
   return (
     <div className={`sidebar ${sidebarClass}`}>
-      <IoClose className='close-btn' onClick={props.toggleSidebar}/>
+      <IoClose className='close-btn' aria-label='On Click' onClick={props.toggleSidebar}/>
       <ul className='sidebar-items'>
         {navItems.map((item, index) => (
           <li key={index}>

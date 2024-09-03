@@ -10,7 +10,7 @@ const Nav = ( props ) => {
 
   return (
     <nav>
-      <div className="burger-menu" onClick={toggleMenu}>
+      <div className="burger-menu" aria-label='On Click' onClick={toggleMenu}>
         <div className={`burger-bar ${isOpen ? 'open' : ''}`}></div>
       </div>
       <ul className='navigation-section'>

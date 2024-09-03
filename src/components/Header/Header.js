@@ -13,7 +13,7 @@ const Header = ({ toggleSidebar }) => {
         </div>
         <div className="navigation-container">
           <Nav navItems={navItems}/>
-          <div className="hamburger-icon" onClick={toggleSidebar}>
+          <div className="hamburger-icon" aria-label='On Click' onClick={toggleSidebar}>
             <GiHamburgerMenu />
           </div>
         </div>

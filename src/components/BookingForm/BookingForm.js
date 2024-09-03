@@ -34,6 +34,7 @@ const BookingForm = (props) => {
     email: Yup.string()
       .email('Invalid email format.')
       .required('Email is required.'),
+    occasion: Yup.string()
   });
 
   const [errors, setErrors] = useState({});

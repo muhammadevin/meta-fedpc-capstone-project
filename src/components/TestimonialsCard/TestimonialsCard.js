@@ -1,5 +1,5 @@
 import './testimonialscard.css'
-import StarRating from '../RatingStars/RatingStars'
+import StarRating from '../StarRating/StarRating'
 
 const TestimonialsCard = (props) => {
   return (

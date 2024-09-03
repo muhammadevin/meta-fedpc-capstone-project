@@ -1,5 +1,5 @@
 import Star from '../../assets/star.svg'
-import './ratingstars.css'
+import './starrating.css'
 
 const StarRating = ({ stars }) => {
   return (

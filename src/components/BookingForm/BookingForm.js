@@ -1,6 +1,5 @@
 import './bookingform.css'
 import {useState} from 'react'
-import { validateEmail } from "../utils";
 import "react-datepicker/dist/react-datepicker.css";
 import Button from '../Button/Button';
 import * as Yup from 'yup';
@@ -43,14 +42,15 @@ const BookingForm = (props) => {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
+    const updatedValue = name === 'numOfGuests' ? parseInt(value, 10) || '' : value;
 
     setFormData({
       ...formData,
-      [name]: value,
+      [name]: updatedValue,
     });
 
     validationSchema
-      .validateAt(name, { [name]: value })
+      .validateAt(name, { [name]: updatedValue })
       .then(() => {
         setErrors((prevErrors) => ({ ...prevErrors, [name]: '' }));
       })
@@ -83,19 +83,21 @@ const BookingForm = (props) => {
 
   return (
     <form onSubmit={handleSubmit} className='booking-form lead-text'>
+      <h4 className='sub-title'>Table Reservation</h4>
       <fieldset>
         <div className="booking-form__field">
-          <label>
+          <label htmlFor='date'>
             Date <sup>*</sup>
           </label>
-          <input type='date' value={formData.date} onChange={(e) => handleChange(e.target.value)}/>
+          <input  id='date' type='date' value={formData.date} onChange={(e) => handleChange(e.target.value)}/>
           <div className="booking-form__field-error"></div>
         </div>
         <div className="booking-form__field">
-          <label>
+          <label htmlFor='time'>
             Time <sup>*</sup>
           </label>
           <select
+            id='time'
             name='time'
             value={formData.time}
             onChange={handleInputChange}
@@ -111,10 +113,10 @@ const BookingForm = (props) => {
           <div className="booking-form__field-error">{renderError('time')}</div>
         </div>
         <div className="booking-form__field">
-          <label>
+          <label htmlFor='numOfGuests'>
             Number of guests <sup>*</sup>
           </label>
-          <input name='numOfGuests' type="number" min="1" placeholder="Number of guests" value={formData.numOfGuests} onChange={handleInputChange}/>
+          <input  id='numOfGuests' name='numOfGuests' type="number" min="1" placeholder="Number of guests" value={formData.numOfGuests} onChange={handleInputChange}/>
           <div className="booking-form__field-error">{renderError('numOfGuests')}</div>
         </div>
         <div className="booking-form__field">
@@ -125,29 +127,29 @@ const BookingForm = (props) => {
           <div className="booking-form__field-error"></div>
         </div>
         <div className="booking-form__field">
-          <label>
+          <label htmlFor='firstName'>
             First name <sup>*</sup>
           </label>
-          <input name='firstName' placeholder="First name" value={formData.firstName} onChange={handleInputChange}/>
+          <input  id='firstName' name='firstName' placeholder="First name" value={formData.firstName} onChange={handleInputChange}/>
           <div className="booking-form__field-error">{renderError('firstName')}</div>
         </div>
         <div className="booking-form__field">
-          <label>Last name</label>
-          <input name='lastName' placeholder="Last name" value={formData.lastName} onChange={handleInputChange}/>
+          <label htmlFor='lastName'>Last name</label>
+          <input  id='lastName' name='lastName' placeholder="Last name" value={formData.lastName} onChange={handleInputChange}/>
           <div className="booking-form__field-error">{renderError('lastName')}</div>
         </div>
         <div className="booking-form__field">
-          <label>
+          <label htmlFor='phoneNumber'>
             Phone number <sup>*</sup>
           </label>
-          <input name='phoneNumber' type="number" className='field__phone-number' value={formData.phoneNumber} onChange={handleInputChange}/>
+          <input  id='phoneNumber' name='phoneNumber' type="number" className='field__phone-number' value={formData.phoneNumber} onChange={handleInputChange}/>
           <div className="booking-form__field-error">{renderError('phoneNumber')}</div>
         </div>
         <div className="booking-form__field">
-          <label>
+          <label htmlFor='email'>
             Email address <sup>*</sup>
           </label>
-          <input name='email' placeholder="Email address" value={formData.email} onChange={handleInputChange}/>
+          <input  id='email' name='email' placeholder="Email address" value={formData.email} onChange={handleInputChange}/>
           <div className="booking-form__field-error">{renderError('email')}</div>
         </div>
       </fieldset>

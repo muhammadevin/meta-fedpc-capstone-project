@@ -10,18 +10,16 @@ import ConfirmedBooking from '../ConfirmedBooking/ConfirmedBooking';
 
 import { fetchAPI, submitAPI } from '../../utils/formAPI';
 
-const initializeTimes = () => {
+export const initializeTimes = () => {
   const today = new Date();
   return fetchAPI(today);
 };
 
-const updateTimes = (state, action) => {
-  switch (action.type) {
-    case 'UPDATE_TIMES':
-      return fetchAPI(action.payload);
-    default:
-      return state;
+export const updateTimes = (state, action) => {
+  if (action.type === 'UPDATE_TIMES') {
+    return fetchAPI(action.payload);
   }
+  return state;
 };
 
 const Main = () => {

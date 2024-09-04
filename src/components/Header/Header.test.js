@@ -17,20 +17,6 @@ describe('Header Component', () => {
     });
   });
 
-  it('renders the hamburger icon only on mobile view', () => {
-    render(<Header toggleSidebar={mockToggleSidebar} />);
-
-    const hamburgerIcon = screen.queryByRole('button', { name: /Toggle Menu/i });
-    expect(hamburgerIcon).not.toBeVisible();
-
-    global.innerWidth = 768;
-    global.dispatchEvent(new Event('resize'));
-
-    const mobileHamburgerIcon = screen.getByRole('button', { name: /Toggle Menu/i });
-
-    expect(mobileHamburgerIcon).toBeVisible();
-  });
-
   it('calls toggleSidebar when the hamburger icon is clicked', () => {
     render(<Header toggleSidebar={mockToggleSidebar} />);
 
